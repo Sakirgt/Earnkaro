@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Spin & Earn + Games</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons (Optional but recommended for this version) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- UPDATED Header -->
+    <header class="app-header-unique">
+        <span class="app-title">Spin & Earn</span>
+        <div class="header-right-controls hidden" id="user-info-header">
+             <span class="token-balance">
+                 <i class="fas fa-coins"></i> Tokens: <span id="user-token-display-header">0</span>
+             </span>
+             <button id="nav-profile-header" class="header-profile-button">
+                 <i class="fas fa-user"></i> Profile
+             </button>
+        </div>
+    </header>
+
+    <!-- Authentication Section -->
+    <div id="authSection">
+         <div id="signupForm" class="content-section">
+            <h2>Sign Up</h2>
+            <input type="email" id="signup-email" placeholder="Email" required class="main-action-button">
+            <input type="password" id="signup-password" placeholder="Password (min. 6 characters)" required class="main-action-button">
+            <input type="text" id="signup-referral-code" placeholder="Referral Code (Optional)" class="main-action-button">
+            <button id="signup-button" class="main-action-button">Create Account</button>
+            <p class="feedback" id="signup-feedback"></p>
+            <p>Already have an account? <button id="show-login-button">Login</button></p>
+        </div>
+        <div id="loginForm" class="content-section hidden">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email" required class="main-action-button">
+            <input type="password" id="login-password" placeholder="Password" required class="main-action-button">
+            <button id="login-button" class="main-action-button">Login</button>
+            <p class="feedback" id="login-feedback"></p>
+            <p>Don't have an account? <button id="show-signup-button">Sign Up</button></p>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div id="mainContent" class="hidden">
+        <div id="bannerAdMainTop" class="ad-container banner-ad hidden"> <p>Banner Ad Area (Top)</p> </div>
+        <section class="content-section">
+             <h2>Welcome Back!</h2>
+             <p style="text-align: center; margin-bottom: 10px;">Your Referral Code: <strong id="user-referral-code-display" style="color:#00ff88;">...</strong></p>
+             <p style="text-align: center;">Share this code with friends!</p>
+         </section>
+        <section class="daily-checkin content-section">
+            <h2>Daily Bonus</h2>
+            <button id="claim-daily-reward-button" class="main-action-button" disabled>Claim Daily Reward</button>
+            <p id="daily-reward-feedback" class="feedback" style="text-align: center; margin-top: 10px;"></p>
+        </section>
+         <div id="bannerAdMainMiddle" class="ad-container banner-ad hidden"> <p>Banner Ad Area (Middle)</p> </div>
+        <section class="watch-earn content-section">
+            <h2>Watch & Earn (AdMob)</h2>
+            <button class="main-action-button" id="watchAdMainButton">Watch Ad & Get Reward</button>
+        </section>
+        <section class="play-game-section content-section">
+            <h2>Play Game</h2>
+            <button id="playTttBtn" class="main-action-button">Play Tic Tac Toe</button>
+        </section>
+        <section class="play-quiz-section content-section">
+            <h2>Test Your Knowledge</h2>
+            <button id="playGkQuizBtn" class="main-action-button">Play GK Quiz</button>
+        </section>
+         <div id="bannerAdMainBottom" class="ad-container banner-ad hidden"> <p>Banner Ad Area (Bottom)</p> </div>
+    </div>
+
+    <!-- Tic Tac Toe Game Section -->
+    <section id="tttSection" class="game-section hidden">
+        <div id="bannerAdTttTop" class="ad-container banner-ad hidden"> <p>Banner Ad Area (TTT Top)</p> </div>
+        <div class="game-container">
+            <h2>Tic Tac Toe</h2>
+            <div class="game-info"> <div class="status" id="tttStatus">Your Turn (X)</div> <div class="level-display">Level: <span id="tttCurrentLevel">1</span>/<span id="tttMaxLevel">10</span></div> </div>
+            <div class="game-board" id="tttGameBoard"> <div class="cell" data-index="0"></div> <div class="cell" data-index="1"></div> <div class="cell" data-index="2"></div> <div class="cell" data-index="3"></div> <div class="cell" data-index="4"></div> <div class="cell" data-index="5"></div> <div class="cell" data-index="6"></div> <div class="cell" data-index="7"></div> <div class="cell" data-index="8"></div> </div>
+            <div class="controls"> <button class="restart-button" id="tttRestartButton">Restart Level</button> <button class="back-button" id="tttBackToMenuBtn">Back to Menu</button> </div>
+            <p id="ttt-ad-status" class="feedback" style="margin-top: 15px; min-height: 1.2em;"></p>
+        </div>
+         <div id="bannerAdTttBottom" class="ad-container banner-ad hidden"> <p>Banner Ad Area (TTT Bottom)</p> </div>
+    </section>
+
+    <!-- GK Quiz Game Section -->
+    <section id="gkQuizSection" class="game-section hidden">
+         <div id="bannerAdGkQuizTop" class="ad-container banner-ad hidden"> <p>Banner Ad Area (GK Quiz Top)</p> </div>
+        <div class="game-container">
+            <h2>GK Quiz Challenge</h2>
+            <div class="quiz-info"> <div>Tokens: <span id="gkQuizTokens">0</span></div> <div>Q: <span id="gkQuestionNumber">1</span>/<span id="gkTotalQuestions">?</span></div> </div>
+            <div class="question-area"> <p id="gkQuestionText">Loading...</p> </div>
+            <div class="options-area" id="gkOptionsContainer"> </div>
+            <div class="feedback" id="gkFeedback">Select an answer!</div>
+            <p id="gk-ad-status" class="feedback" style="margin-top: 15px; min-height: 1.2em;"></p>
+            <div class="controls"> <button id="gkNextButton" class="hidden">Next Question</button> <button class="back-button" id="gkQuizBackToMenuBtn">Back to Menu</button> </div>
+        </div>
+         <div id="bannerAdGkQuizBottom" class="ad-container banner-ad hidden"> <p>Banner Ad Area (GK Quiz Bottom)</p> </div>
+    </section>
+
+    <!-- Profile Section (UPDATED) -->
+    <section id="profileSection" class="content-section hidden">
+        <div id="bannerAdProfile" class="ad-container banner-ad hidden"> <p>Banner Ad Area (Profile)</p> </div>
+        <h2>My Profile</h2>
+
+        <div class="profile-avatar-section">
+            <img id="profile-avatar-img" src="placeholder-avatar.png" alt="Avatar" class="profile-avatar">
+             <label for="avatar-upload-input" class="main-action-button avatar-change-button">
+                 <i class="fas fa-camera"></i> Change Avatar
+             </label>
+            <input type="file" id="avatar-upload-input" accept="image/*" style="display: none;">
+            <p id="avatar-upload-status" class="feedback" style="font-size: 0.8em;"></p>
+        </div>
+
+        <div class="profile-details">
+            <p><strong>Email:</strong> <span id="profile-email-display">...</span></p>
+            <div class="profile-detail-edit">
+                 <p><strong>Name:</strong> <span id="profile-name-display">...</span></p>
+                 <button id="edit-name-button" class="edit-button"><i class="fas fa-pencil-alt"></i></button>
+            </div>
+            <div id="edit-name-form" class="hidden" style="margin-top: 5px;">
+                <input type="text" id="edit-name-input" placeholder="Enter new name" class="main-action-button" style="margin-bottom: 5px;">
+                <button id="save-name-button" class="main-action-button small-button">Save</button>
+                <button id="cancel-edit-name-button" class="main-action-button small-button secondary">Cancel</button>
+            </div>
+            <p><strong>My Tokens:</strong> <span id="profile-token-display">0</span></p>
+            <p><strong>My Referral Code:</strong> <span id="profile-referral-code-display">...</span></p>
+            <p><strong>Total Referrals:</strong> <span id="profile-referral-count-display">0</span></p>
+        </div>
+
+        <div class="profile-section-block">
+            <h3>Withdraw Tokens</h3>
+            <input type="number" id="withdrawal-amount" placeholder="Amount (Min: 1000)" class="main-action-button">
+            <select id="withdrawal-method" class="main-action-button">
+                <option value="">-- Select Method --</option>
+                <option value="upi">UPI</option>
+                <option value="phonepe">PhonePe Number</option>
+                <option value="googlepay">Google Pay Number</option>
+                <option value="bank">Bank Account (Enter Details)</option>
+            </select>
+            <input type="text" id="withdrawal-details" placeholder="Enter UPI ID / Phone Number / Account Details" class="main-action-button">
+            <button id="submit-withdrawal-button" class="main-action-button">Request Withdrawal</button>
+            <p id="withdrawal-feedback" class="feedback"></p>
+            <p style="font-size: 0.8em; color: #aaa; text-align: center; margin-top: 5px;">Requests are processed manually within 24-48 hours.</p>
+        </div>
+
+        <div class="profile-section-block">
+             <h3>Account Actions</h3>
+             <button id="change-password-button" class="main-action-button secondary">Change Password</button>
+             <a href="mailto:support@example.com?subject=Support Request" class="main-action-button secondary"> <i class="fas fa-headset"></i> Contact Support</a> <!-- REPLACE EMAIL -->
+             <a href="#" target="_blank" class="main-action-button secondary"> <i class="fas fa-question-circle"></i> 24/7 Customer Service (FAQ)</a> <!-- REPLACE # with FAQ link -->
+             <button id="logout-button-profile" class="main-action-button logout-button">Logout</button>
+        </div>
+    </section>
+
+    <!-- Referral Section -->
+    <section id="referralSection" class="content-section hidden">
+         <div id="bannerAdReferral" class="ad-container banner-ad hidden"> <p>Banner Ad Area (Referral)</p> </div>
+        <h2>Refer & Earn</h2>
+        <div class="profile-details" style="background-color: #1c1c1c;">
+            <p><strong>Your Code:</strong> <span id="refer-code-display" style="color:#00ff88; font-weight: bold;">...</span></p>
+            <p><strong>Referral Link:</strong> <span id="refer-link-display" style="color:#aaa; font-size: 0.9em; word-break: break-all;">Loading...</span></p>
+             <p><strong>Total Referrals:</strong> <span id="referral-count-display" style="font-weight: bold; color: #fff;">0</span></p>
+        </div>
+        <button id="copy-referral-button" class="main-action-button" style="margin-top: 15px;">Copy Referral Link</button>
+        <p style="margin-top: 20px; text-align: center; color: #ccc;"> Share your code! You get <strong style="color:#00ff88;">500</strong> tokens and your friend gets <strong style="color:#00ff88;">50</strong> tokens when they sign up using your code. </p>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboardSection" class="content-section hidden">
+         <div id="bannerAdLeaderboard" class="ad-container banner-ad hidden"> <p>Banner Ad Area (Leaderboard)</p> </div>
+        <h2>Referral Leaderboard</h2>
+        <p style="text-align: center; color: #ccc;">Top earners by referrals:</p>
+        <div id="leaderboard-list" class="leaderboard-display"> <p>Loading...</p> </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="historySection" class="content-section hidden">
+         <div id="bannerAdHistory" class="ad-container banner-ad hidden"> <p>Banner Ad Area (History)</p> </div>
+        <h2>Transaction History</h2>
+        <div id="history-list" class="history-display"> <p>Loading history...</p> </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <nav id="bottomNav" class="hidden"> <button id="nav-home">Home</button> <button id="nav-refer">Refer</button> <button id="nav-leaderboard">Rank</button> <button id="nav-history">History</button> <button id="nav-profile-bottom">Profile</button> </nav>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>

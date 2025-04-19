@@ -1,0 +1,202 @@
+/* --- Combined Styles --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', sans-serif; background: #0f0f0f; color: white; padding-bottom: 70px; overflow-x: hidden; }
+
+/* --- Header & Nav Styles --- */
+header.app-header-unique { background: linear-gradient(90deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%); padding: 10px 15px; font-size: 20px; font-weight: bold; color: #00ff88; border-bottom: 2px solid #00ff88; position: sticky; top: 0; z-index: 99; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0, 255, 136, 0.1); }
+header.app-header-unique .app-title { flex-grow: 1; text-align: center; margin-left: 0; text-shadow: 0 0 5px rgba(0, 255, 136, 0.5); }
+header.app-header-unique .header-right-controls { display: flex; align-items: center; gap: 15px; font-size: 0.9em; color: #ccc; position: static; margin-left: auto; }
+header.app-header-unique .token-balance { background-color: rgba(0, 0, 0, 0.2); padding: 5px 10px; border-radius: 15px; border: 1px solid #444; }
+header.app-header-unique .token-balance i { margin-right: 5px; color: #ffc107; }
+header.app-header-unique .token-balance span#user-token-display-header { color: #00ff88; font-weight: bold; }
+header.app-header-unique .header-profile-button { background: #00ff88; border: none; color: #111; padding: 6px 12px; border-radius: 5px; cursor: pointer; font-size: 0.9em; font-weight: 600; transition: background-color 0.2s, transform 0.1s; display: flex; align-items: center; gap: 5px; }
+header.app-header-unique .header-profile-button i { font-size: 0.9em; }
+header.app-header-unique .header-profile-button:hover { background-color: #00e67a; }
+header.app-header-unique .header-profile-button:active { transform: scale(0.95); }
+header.app-header-unique .header-right-controls.hidden { display: none; }
+nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #181818; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #222; z-index: 100; height: 60px; }
+nav button { background: none; color: white; border: none; font-size: 14px; flex: 1; transition: 0.2s; cursor: pointer; padding: 5px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+nav button:active { color: #00ff88; }
+nav button:disabled { color: #555; cursor: not-allowed; }
+
+/* --- Main Content Section Styles --- */
+.content-section { background: #1c1c1c; margin: 15px; padding: 20px; border-radius: 12px; box-shadow: 0 0 10px #00000066; }
+.content-section h2 { color: #00ff88; font-size: 20px; margin-bottom: 15px; text-align: center; font-weight: 600; border-bottom: 1px solid #333; padding-bottom: 10px; }
+
+/* --- Daily Bonus Styles --- */
+.daily-checkin .main-action-button { /* Inherits base styles */ }
+.daily-checkin .main-action-button.claimed { background: #2a2a2a !important; border-color: #444 !important; color: #666 !important; cursor: not-allowed !important; opacity: 0.7 !important; animation: none !important; }
+.daily-checkin .feedback { min-height: 1.2em; }
+
+/* --- General Main Action Button Styles --- */
+.main-action-button { width: 100%; padding: 12px; font-size: 16px; background: #0f0f0f; color: white; border: 2px solid #00ff88; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; text-align: center; box-sizing: border-box; margin-top: 10px; }
+.main-action-button:first-of-type { margin-top: 0; }
+.main-action-button:disabled { background: #333; border-color: #555; color: #888; cursor: not-allowed; }
+.watch-earn button.main-action-button { animation: pulse 2s infinite; }
+.main-action-button:not(:disabled):hover { background: #00ff88; color: black; }
+.main-action-button:not(:disabled):active { transform: scale(0.96); }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); } }
+.main-action-button.small-button { padding: 8px 15px; font-size: 14px; width: auto; display: inline-block; margin-left: 5px; }
+.main-action-button.secondary { background-color: #333; border-color: #555; color: #ccc; }
+.main-action-button.secondary:not(:disabled):hover { background-color: #444; border-color: #777; color: white; }
+.main-action-button i { margin-right: 8px; } /* Space for icons in buttons */
+
+/* --- Common Game Container Style --- */
+.game-section { padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: calc(100vh - 130px); }
+.game-container { background: #1c1c1c; padding: 20px 20px 15px 20px; border-radius: 12px; box-shadow: 0 0 15px #00000088; width: 100%; max-width: 500px; text-align: center; margin-top: 10px; margin-left: 15px; margin-right: 15px; }
+.game-container h2 { color: #00ff88; margin-bottom: 15px; font-size: 20px; border: none; padding-bottom: 0; }
+
+/* --- Tic Tac Toe Specific Styles --- */
+#tttSection .game-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 0 5px; flex-wrap: wrap; gap: 8px; }
+#tttSection .status { font-size: 1.1em; min-height: 1.5em; color: #00ff88; text-align: left; flex-grow: 1; }
+#tttSection .level-display { font-size: 1em; color: #aaa; text-align: right; }
+#tttSection #tttCurrentLevel { font-weight: bold; color: #fff; }
+#tttSection .game-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 300px; margin: 0 auto 15px auto; }
+#tttSection .cell { width: 100%; aspect-ratio: 1 / 1; background-color: #0f0f0f; border: 2px solid #333; border-radius: 8px; display: flex; justify-content: center; align-items: center; font-size: 2.8em; font-weight: bold; cursor: pointer; transition: background-color 0.3s, border-color 0.3s; color: white; }
+#tttSection .cell:hover:not([style*="not-allowed"]) { background-color: #252525; border-color: #444; }
+#tttSection .cell.x { color: #00ff88; }
+#tttSection .cell.o { color: #ffffff; }
+#tttSection .cell.win { background-color: rgba(0, 255, 136, 0.2); border-color: #00ff88; }
+#tttSection .feedback { min-height: 1.2em; font-weight: bold; }
+
+/* --- GK Quiz Section Styles --- */
+#gkQuizSection .quiz-info { display: flex; justify-content: space-around; margin-bottom: 20px; padding: 5px 10px; background: #2a2a2a; border-radius: 8px; font-size: 0.9em; flex-wrap: wrap; gap: 10px; }
+#gkQuizSection .quiz-info span { color: #00ff88; font-weight: bold; }
+#gkQuizSection .question-area { background: #0f0f0f; padding: 15px; border-radius: 8px; margin-bottom: 20px; min-height: 70px; display: flex; align-items: center; justify-content: center; }
+#gkQuizSection #gkQuestionText { font-size: 1.3em; font-weight: 600; line-height: 1.4; color: #fff; }
+#gkQuizSection .options-area { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 20px; }
+#gkQuizSection .options-area button { width: 100%; padding: 14px; font-size: 1.1em; text-align: center; background: #0f0f0f; color: white; border: 2px solid #444; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
+#gkQuizSection .options-area button:hover:not(:disabled) { background: #252525; border-color: #00ff88; }
+#gkQuizSection .options-area button:disabled { cursor: not-allowed; opacity: 0.7; }
+#gkQuizSection .options-area button.correct { background-color: rgba(0, 255, 136, 0.3); border-color: #00ff88; color: #00ff88; font-weight: bold; }
+#gkQuizSection .options-area button.incorrect { background-color: rgba(255, 80, 80, 0.3); border-color: #ff5050; color: #ff5050; }
+#gkQuizSection .feedback { min-height: 2em; margin-bottom: 15px; font-weight: bold; font-size: 1.1em; }
+#gkQuizSection .feedback.correct-message { color: #00ff88; }
+#gkQuizSection .feedback.incorrect-message { color: #ff5050; }
+#gkQuizSection .feedback.level-message { color: #ffffff; }
+
+/* --- Controls Styling (Common for TTT/GK Quiz Games) --- */
+.controls { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.controls button { display: inline-block; width: auto; flex-grow: 1; max-width: calc(50% - 5px); padding: 10px 15px; font-size: 1em; background: #0f0f0f; color: white; border: 2px solid #aaa; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; }
+.controls button.restart-button, .controls button#gkNextButton { border-color: #00ff88; color: #00ff88; }
+.controls button.back-button { border-color: #aaa; color: #aaa; }
+.controls button:not(:disabled):hover { background: #aaa; color: black; }
+.controls button.restart-button:not(:disabled):hover, .controls button#gkNextButton:not(:disabled):hover { background: #00ff88; color: black; border-color: #00ff88; }
+.controls button.back-button:not(:disabled):hover { background: #aaa; color: black; border-color: #aaa; }
+.controls button:disabled { border-color: #555 !important; color: #555 !important; background: #1a1a1a !important; cursor: not-allowed !important; opacity: 0.6; }
+
+/* --- Auth Form Styles --- */
+#authSection input.main-action-button { border-color: #555; margin-bottom: 10px; background-color: #222; }
+#authSection input.main-action-button:focus { border-color: #00ff88; background-color: #2a2a2a; }
+#authSection p { margin-top: 15px; font-size: 0.9em; text-align: center; }
+#authSection p button { background: none; border: none; color: #00ff88; cursor: pointer; text-decoration: underline; font-size: 1em; padding: 0; }
+#authSection .feedback { margin-top: 15px; color: #ff5050; min-height: 1.2em; text-align: center; font-weight: bold; }
+
+/* --- Ad Container Styles --- */
+.ad-container { width: 100%; max-width: 320px; margin: 20px auto; display: flex; justify-content: center; align-items: center; overflow: hidden; border-radius: 4px; }
+.ad-container.banner-ad { min-height: 50px; background-color: #222; border: 1px dashed #444; }
+.ad-container.banner-ad p { color: #666; font-size: 0.8em; }
+.ad-container.hidden { display: none !important; }
+
+/* --- Profile Section Styles --- */
+#profileSection .profile-avatar-section { text-align: center; margin-bottom: 25px; }
+.profile-avatar { width: 100px; height: 100px; border-radius: 50%; border: 3px solid #00ff88; object-fit: cover; margin-bottom: 10px; background-color: #333; }
+.avatar-change-button { width: auto; display: inline-block; padding: 8px 15px; font-size: 0.9em; }
+.avatar-change-button i { margin-right: 5px; }
+#profileSection .profile-details { background-color: #0f0f0f; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: left; }
+#profileSection .profile-details p { margin-bottom: 10px; font-size: 1.1em; color: #ccc; }
+#profileSection .profile-details p strong { color: #aaa; min-width: 140px; display: inline-block; }
+#profileSection .profile-details p span { color: #fff; font-weight: bold; }
+#profileSection .profile-details p span#profile-token-display,
+#profileSection .profile-details p span#profile-referral-code-display { color: #00ff88; }
+.profile-detail-edit { display: flex; align-items: center; justify-content: space-between; }
+.profile-detail-edit p { margin-bottom: 0; }
+.edit-button { background: none; border: none; color: #00ff88; font-size: 1em; cursor: pointer; padding: 5px; }
+#edit-name-form input { font-size: 1em; padding: 10px; }
+.profile-section-block { background-color: #0f0f0f; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+.profile-section-block h3 { color: #00ff88; font-size: 1.1em; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 8px; }
+.profile-section-block .main-action-button { margin-top: 10px; }
+.profile-section-block .main-action-button:first-child { margin-top: 0; }
+#profileSection .profile-actions { display: flex; flex-direction: column; gap: 10px; }
+#profileSection .logout-button { background-color: #ff5050; border-color: #ff3030; color: white; }
+#profileSection .logout-button:hover { background-color: #dd4040; border-color: #cc2020; color: white; }
+#withdrawal-method { background-color: #222; border-color: #555; color: white; /* Ensure text is visible */ }
+#withdrawal-feedback { margin-top: 10px; min-height: 1.2em; text-align: center; }
+
+/* --- Referral Section Styles --- */
+#referralSection .profile-details { background-color: #0f0f0f; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: left; }
+#referralSection .profile-details p { margin-bottom: 10px; font-size: 1.1em; color: #ccc; }
+#referralSection .profile-details p strong { color: #aaa; min-width: 120px; display: inline-block; }
+#referralSection #copy-referral-button { max-width: 250px; margin-left: auto; margin-right: auto; display: block; }
+#referralSection > p { margin-bottom: 10px; line-height: 1.5; text-align: center; color: #ccc; }
+#referralSection > p strong { color: #00ff88; }
+
+/* --- Leaderboard Section Styles --- */
+#leaderboardSection > p { margin-bottom: 10px; line-height: 1.5; text-align: center; color: #ccc; }
+.leaderboard-display { background-color: #0f0f0f; padding: 15px; border-radius: 8px; margin-top: 15px; min-height: 100px; }
+.leaderboard-display p { text-align: center; color: #888; font-style: italic; }
+.leaderboard-display ol { list-style-type: none; padding-left: 0; counter-reset: leaderboard-counter; }
+.leaderboard-display li { background-color: #2a2a2a; padding: 10px 15px; margin-bottom: 8px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 1.05em; border-left: 4px solid #00ff88; counter-increment: leaderboard-counter; }
+.leaderboard-display li::before { content: "#" counter(leaderboard-counter); font-weight: bold; color: #00ff88; margin-right: 15px; min-width: 25px; text-align: right; }
+.leaderboard-display .leaderboard-name { flex-grow: 1; color: #eee; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-right: 10px; }
+.leaderboard-display .leaderboard-count { font-weight: bold; color: #fff; }
+.leaderboard-display .leaderboard-count span { font-size: 0.8em; color: #aaa; margin-left: 3px; }
+
+/* --- History Section Styles --- */
+#historySection > p { margin-bottom: 10px; line-height: 1.5; text-align: center; color: #ccc; }
+.history-display { background-color: #0f0f0f; padding: 15px; border-radius: 8px; margin-top: 15px; min-height: 150px; max-height: 400px; overflow-y: auto; }
+.history-display p.loading-msg { text-align: center; color: #888; font-style: italic; }
+.history-item { background-color: #2a2a2a; padding: 12px 15px; margin-bottom: 8px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 0.95em; border-left: 4px solid #555; }
+.history-item.earn { border-left-color: #00ff88; }
+.history-item.spend { border-left-color: #ff5050; }
+.history-details { flex-grow: 1; margin-right: 10px; }
+.history-reason { display: block; color: #eee; font-weight: 500; margin-bottom: 3px; text-transform: capitalize; }
+.history-timestamp { display: block; color: #888; font-size: 0.85em; }
+.history-amount { font-weight: bold; font-size: 1.1em; }
+.history-amount.earn { color: #00ff88; }
+.history-amount.spend { color: #ff5050; }
+
+/* Utility Class */
+.hidden { display: none !important; }
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 500px) {
+    header.app-header-unique { font-size: 18px; }
+    header.app-header-unique .header-right-controls { font-size: 0.8em; gap: 10px; }
+    header.app-header-unique .header-profile-button { padding: 5px 10px; }
+    #gkQuizSection .options-area { grid-template-columns: 1fr; }
+    #tttSection .cell { font-size: 2.2em; }
+    #tttSection .game-board { max-width: 250px; gap: 6px; }
+    .controls button { max-width: 100%; }
+    #gkQuizSection #gkQuestionText { font-size: 1.15em; }
+    #gkQuizSection .options-area button { font-size: 1em; padding: 12px; }
+    .game-container { margin-left: 10px; margin-right: 10px; padding: 15px; }
+    #profileSection .profile-details p { font-size: 1em; }
+    #profileSection .profile-details p strong { min-width: 120px; }
+    #referralSection .profile-details p strong { min-width: 100px; }
+    .leaderboard-display li { font-size: 1em; padding: 8px 12px; }
+    .leaderboard-display li::before { margin-right: 10px; min-width: 20px; }
+    .history-item { font-size: 0.9em; padding: 10px 12px; }
+}
+@media (max-width: 380px) {
+    header.app-header-unique { font-size: 16px; padding: 8px 10px; }
+    header.app-header-unique .app-title { margin-left: 0; text-align: left; flex-grow: 0;}
+    header.app-header-unique .header-right-controls { font-size: 0.75em; gap: 8px; }
+    nav button { font-size: 12px; }
+    #tttSection .game-board { max-width: 220px; gap: 4px; }
+    #tttSection .cell { font-size: 1.8em; }
+     #gkQuizSection #gkQuestionText { font-size: 1.05em; }
+     #gkQuizSection .options-area button { font-size: 0.95em; padding: 10px; }
+     .ad-container { max-width: 100%; margin: 15px auto; }
+     .content-section { margin: 10px; padding: 15px; }
+     .game-container { margin-left: 5px; margin-right: 5px; }
+     #profileSection .profile-details { padding: 10px; }
+     #profileSection .profile-details p strong { min-width: 100px; }
+     #referralSection .profile-details { padding: 10px; }
+     #referralSection .profile-details p strong { min-width: 90px; }
+     .leaderboard-display li { font-size: 0.95em; padding: 6px 10px; }
+     .leaderboard-display li::before { margin-right: 8px; }
+     .history-item { font-size: 0.85em; padding: 8px 10px; }
+     .history-timestamp { font-size: 0.8em; }
+     .history-amount { font-size: 1em; }
+}
