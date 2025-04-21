@@ -14,25 +14,142 @@ header.app-header-unique .header-profile-button i { font-size: 0.9em; }
 header.app-header-unique .header-profile-button:hover { background-color: #00e67a; }
 header.app-header-unique .header-profile-button:active { transform: scale(0.95); }
 header.app-header-unique .header-right-controls.hidden { display: none; }
-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #181818; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #222; z-index: 100; height: 60px; }
-nav button { background: none; color: white; border: none; font-size: 14px; flex: 1; transition: 0.2s; cursor: pointer; padding: 5px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
-nav button:active { color: #00ff88; }
+nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #181818; display: flex; justify-content: space-around; padding: 5px 0; border-top: 1px solid #222; z-index: 100; height: 60px; box-shadow: 0 -2px 5px rgba(0,0,0,0.3); }
+nav button { background: none; color: #aaa; border: none; font-size: 11px; /* Adjusted size */ flex: 1; transition: color 0.2s; cursor: pointer; padding: 5px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; /* Increased gap */ }
+nav button i { font-size: 18px; /* Icon size */ margin-bottom: 2px; display: block; width: 100%; text-align: center;}
+nav button span { font-size: 11px; /* Text size */}
+nav button.active, nav button:active { color: #00ff88; }
 nav button:disabled { color: #555; cursor: not-allowed; }
 
 /* --- Main Content Section Styles --- */
 .content-section { background: #1c1c1c; margin: 15px; padding: 20px; border-radius: 12px; box-shadow: 0 0 10px #00000066; }
 .content-section h2 { color: #00ff88; font-size: 20px; margin-bottom: 15px; text-align: center; font-weight: 600; border-bottom: 1px solid #333; padding-bottom: 10px; }
+.content-section h3.section-subtitle { /* Added for subheadings */
+    color: #ccc;
+    font-size: 16px;
+    margin-bottom: 12px;
+    text-align: left;
+    font-weight: 500;
+    border-bottom: 1px dashed #444;
+    padding-bottom: 5px;
+}
 
-/* --- Daily Bonus Styles --- */
-.daily-checkin .main-action-button { /* Inherits base styles */ }
-.daily-checkin .main-action-button.claimed { background: #2a2a2a !important; border-color: #444 !important; color: #666 !important; cursor: not-allowed !important; opacity: 0.7 !important; animation: none !important; }
-.daily-checkin .feedback { min-height: 1.2em; }
+/* --- INTEGRATED: Feature Buttons Styles (Adapted for Dark Theme) --- */
+.features {
+  display: flex;
+  justify-content: space-around; /* Use space-around for better spacing */
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 15px; /* Adjusted margin */
+}
+.feature-btn {
+  background: #2a2a2a; /* Darker background */
+  flex: 1 1 45%; /* Allow two buttons per row */
+  max-width: calc(50% - 10px); /* Max width for two per row */
+  text-align: center;
+  padding: 15px 10px; /* Increased padding */
+  border-radius: 10px; /* Slightly less round */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adjusted shadow */
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  border: 1px solid #444; /* Border */
+  cursor: pointer;
+  color: #ccc; /* Default text color */
+}
+.feature-btn:hover {
+  transform: translateY(-3px); /* Lift effect */
+  border-color: #00ff88;
+  background-color: #333;
+}
+.feature-icon {
+  font-size: 28px; /* Adjusted size */
+  margin-bottom: 8px;
+  color: #00ff88; /* Icon color */
+}
+.feature-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #eee; /* Text color */
+}
+
+/* --- INTEGRATED: Daily Check-in Visual Styles (Adapted for Dark Theme) --- */
+.daily-checkin-section .section-subtitle { margin-bottom: 15px;}
+.checkin {
+  display: flex;
+  align-items: stretch; /* Align items stretch for equal height */
+  justify-content: flex-start; /* Start from left */
+  overflow-x: auto;
+  padding: 10px 5px 15px 5px; /* Add bottom padding */
+  background: #0f0f0f; /* Darker background for contrast */
+  border-radius: 10px;
+  border: 1px solid #333;
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+.checkin::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+.day {
+  text-align: center;
+  flex: 0 0 auto; /* Don't grow, don't shrink, base size auto */
+  min-width: 65px; /* Minimum width for each day */
+  padding: 0 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.circle {
+  width: 45px;
+  height: 45px;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px; /* Space below circle */
+  font-weight: bold;
+  font-size: 1.2em; /* Icon size */
+  border: 2px solid transparent; /* Base border */
+  transition: all 0.3s ease;
+}
+.circle.completed {
+  background: rgba(0, 255, 136, 0.15); /* Subtle green background */
+  color: #00ff88;
+  border-color: #00ff88;
+}
+.circle.today {
+  background: #00ff88; /* Bright green background */
+  color: #111; /* Dark text/icon */
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  animation: pulse-checkin 1.5s infinite; /* Pulse animation for today */
+}
+.circle.upcoming {
+  background: #2a2a2a; /* Dark gray */
+  color: #888;
+  border-color: #444;
+}
+.day-label {
+  font-size: 11px; /* Smaller label */
+  color: #aaa;
+}
+@keyframes pulse-checkin {
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 255, 136, 0.5); }
+  50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 255, 136, 0.7); }
+  100% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 255, 136, 0.5); }
+}
+
+/* --- Daily Bonus Button Styling (Adjusted) --- */
+.daily-checkin-section .main-action-button { /* Inherits base styles */ }
+.daily-checkin-section .main-action-button.claimed { background: #2a2a2a !important; border-color: #444 !important; color: #666 !important; cursor: not-allowed !important; opacity: 0.7 !important; }
+.daily-checkin-section .feedback { min-height: 1.2em; }
 
 /* --- General Main Action Button Styles --- */
-.main-action-button { width: 100%; padding: 12px; font-size: 16px; background: #0f0f0f; color: white; border: 2px solid #00ff88; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; text-align: center; box-sizing: border-box; margin-top: 10px; }
+.main-action-button { width: 100%; padding: 12px; font-size: 16px; background: #0f0f0f; color: white; border: 2px solid #00ff88; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; text-align: center; box-sizing: border-box; margin-top: 10px; font-weight: 500; }
 .main-action-button:first-of-type { margin-top: 0; }
-.main-action-button:disabled { background: #333; border-color: #555; color: #888; cursor: not-allowed; }
-.watch-earn button.main-action-button { animation: pulse 2s infinite; }
+.main-action-button:disabled { background: #333; border-color: #555; color: #888; cursor: not-allowed; opacity: 0.7; }
+/* Update specific button animation */
+#watchAdMainButton:not(:disabled) { animation: pulse 2s infinite; } /* Animate only the watch ad button */
 .main-action-button:not(:disabled):hover { background: #00ff88; color: black; }
 .main-action-button:not(:disabled):active { transform: scale(0.96); }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); } }
@@ -40,6 +157,87 @@ nav button:disabled { color: #555; cursor: not-allowed; }
 .main-action-button.secondary { background-color: #333; border-color: #555; color: #ccc; }
 .main-action-button.secondary:not(:disabled):hover { background-color: #444; border-color: #777; color: white; }
 .main-action-button i { margin-right: 8px; } /* Space for icons in buttons */
+
+/* --- Game Hub Button Styles (Card View with Font Awesome Icon) --- */
+#gamesHubSection .game-card-button {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 12px;
+  padding: 25px 15px; /* Increased padding for card feel */
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+  color: #eee;
+  font-size: 16px;
+  display: block;
+  text-decoration: none;
+  box-sizing: border-box;
+  margin-left: 0;
+  margin-right: 0;
+  border-width: 1px;
+}
+
+#gamesHubSection .game-card-button:first-of-type {
+    margin-top: 0;
+}
+
+/* Style for the icon container (holds the <i> tag) - NEW */
+#gamesHubSection .game-card-icon {
+  display: block;             /* Icon on its own line */
+  font-size: 34px;            /* Larger icon size (adjust as needed) */
+  color: #00ff88;            /* Icon color */
+  margin-bottom: 15px;        /* Space between icon and text */
+  line-height: 1;             /* Adjust line height for icon */
+}
+
+/* Remove default icon margin if coming from main-action-button's <i> - NEW */
+#gamesHubSection .game-card-icon i {
+    margin-right: 0;
+}
+
+/* REMOVE or COMMENT OUT the .game-logo-img rule */
+/*
+#gamesHubSection .game-logo-img {
+  display: block;
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
+}
+*/
+
+/* Style for the text container (Remains same as before) */
+#gamesHubSection .game-card-text {
+  display: block;
+  font-weight: 600;
+  font-size: 16px;
+  color: #eee;
+  line-height: 1.3; /* Ensure proper line height for text */
+}
+
+/* Hover effect (Remains same as before) */
+#gamesHubSection .game-card-button:hover {
+  background-color: #333;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Active (click) effect (Remains same as before) */
+#gamesHubSection .game-card-button:active {
+  transform: translateY(1px) scale(0.99);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #252525;
+}
+
+/* Remove bottom margin if inherited */
+#gamesHubSection .game-card-button {
+    margin-bottom: 0;
+}
+/* --- End Game Hub Button Styles --- */
+
 
 /* --- Common Game Container Style --- */
 .game-section { padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: calc(100vh - 130px); }
@@ -91,6 +289,9 @@ nav button:disabled { color: #555; cursor: not-allowed; }
 #authSection p { margin-top: 15px; font-size: 0.9em; text-align: center; }
 #authSection p button { background: none; border: none; color: #00ff88; cursor: pointer; text-decoration: underline; font-size: 1em; padding: 0; }
 #authSection .feedback { margin-top: 15px; color: #ff5050; min-height: 1.2em; text-align: center; font-weight: bold; }
+.feedback { min-height: 1.2em; /* Common feedback height */}
+.feedback.correct-message { color: #00ff88; }
+.feedback.incorrect-message { color: #ff5050; }
 
 /* --- Ad Container Styles --- */
 .ad-container { width: 100%; max-width: 320px; margin: 20px auto; display: flex; justify-content: center; align-items: center; overflow: hidden; border-radius: 4px; }
@@ -104,8 +305,8 @@ nav button:disabled { color: #555; cursor: not-allowed; }
 .avatar-change-button { width: auto; display: inline-block; padding: 8px 15px; font-size: 0.9em; }
 .avatar-change-button i { margin-right: 5px; }
 #profileSection .profile-details { background-color: #0f0f0f; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: left; }
-#profileSection .profile-details p { margin-bottom: 10px; font-size: 1.1em; color: #ccc; }
-#profileSection .profile-details p strong { color: #aaa; min-width: 140px; display: inline-block; }
+#profileSection .profile-details p { margin-bottom: 12px; font-size: 1.05em; color: #ccc; line-height: 1.4; }
+#profileSection .profile-details p strong { color: #aaa; min-width: 140px; display: inline-block; font-weight: 500; }
 #profileSection .profile-details p span { color: #fff; font-weight: bold; }
 #profileSection .profile-details p span#profile-token-display,
 #profileSection .profile-details p span#profile-referral-code-display { color: #00ff88; }
@@ -120,7 +321,7 @@ nav button:disabled { color: #555; cursor: not-allowed; }
 #profileSection .profile-actions { display: flex; flex-direction: column; gap: 10px; }
 #profileSection .logout-button { background-color: #ff5050; border-color: #ff3030; color: white; }
 #profileSection .logout-button:hover { background-color: #dd4040; border-color: #cc2020; color: white; }
-#withdrawal-method { background-color: #222; border-color: #555; color: white; /* Ensure text is visible */ }
+#withdrawal-method { background-color: #222; border-color: #555; color: white; }
 #withdrawal-feedback { margin-top: 10px; min-height: 1.2em; text-align: center; }
 
 /* --- Referral Section Styles --- */
@@ -139,64 +340,4 @@ nav button:disabled { color: #555; cursor: not-allowed; }
 .leaderboard-display li { background-color: #2a2a2a; padding: 10px 15px; margin-bottom: 8px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 1.05em; border-left: 4px solid #00ff88; counter-increment: leaderboard-counter; }
 .leaderboard-display li::before { content: "#" counter(leaderboard-counter); font-weight: bold; color: #00ff88; margin-right: 15px; min-width: 25px; text-align: right; }
 .leaderboard-display .leaderboard-name { flex-grow: 1; color: #eee; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-right: 10px; }
-.leaderboard-display .leaderboard-count { font-weight: bold; color: #fff; }
-.leaderboard-display .leaderboard-count span { font-size: 0.8em; color: #aaa; margin-left: 3px; }
-
-/* --- History Section Styles --- */
-#historySection > p { margin-bottom: 10px; line-height: 1.5; text-align: center; color: #ccc; }
-.history-display { background-color: #0f0f0f; padding: 15px; border-radius: 8px; margin-top: 15px; min-height: 150px; max-height: 400px; overflow-y: auto; }
-.history-display p.loading-msg { text-align: center; color: #888; font-style: italic; }
-.history-item { background-color: #2a2a2a; padding: 12px 15px; margin-bottom: 8px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 0.95em; border-left: 4px solid #555; }
-.history-item.earn { border-left-color: #00ff88; }
-.history-item.spend { border-left-color: #ff5050; }
-.history-details { flex-grow: 1; margin-right: 10px; }
-.history-reason { display: block; color: #eee; font-weight: 500; margin-bottom: 3px; text-transform: capitalize; }
-.history-timestamp { display: block; color: #888; font-size: 0.85em; }
-.history-amount { font-weight: bold; font-size: 1.1em; }
-.history-amount.earn { color: #00ff88; }
-.history-amount.spend { color: #ff5050; }
-
-/* Utility Class */
-.hidden { display: none !important; }
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 500px) {
-    header.app-header-unique { font-size: 18px; }
-    header.app-header-unique .header-right-controls { font-size: 0.8em; gap: 10px; }
-    header.app-header-unique .header-profile-button { padding: 5px 10px; }
-    #gkQuizSection .options-area { grid-template-columns: 1fr; }
-    #tttSection .cell { font-size: 2.2em; }
-    #tttSection .game-board { max-width: 250px; gap: 6px; }
-    .controls button { max-width: 100%; }
-    #gkQuizSection #gkQuestionText { font-size: 1.15em; }
-    #gkQuizSection .options-area button { font-size: 1em; padding: 12px; }
-    .game-container { margin-left: 10px; margin-right: 10px; padding: 15px; }
-    #profileSection .profile-details p { font-size: 1em; }
-    #profileSection .profile-details p strong { min-width: 120px; }
-    #referralSection .profile-details p strong { min-width: 100px; }
-    .leaderboard-display li { font-size: 1em; padding: 8px 12px; }
-    .leaderboard-display li::before { margin-right: 10px; min-width: 20px; }
-    .history-item { font-size: 0.9em; padding: 10px 12px; }
-}
-@media (max-width: 380px) {
-    header.app-header-unique { font-size: 16px; padding: 8px 10px; }
-    header.app-header-unique .app-title { margin-left: 0; text-align: left; flex-grow: 0;}
-    header.app-header-unique .header-right-controls { font-size: 0.75em; gap: 8px; }
-    nav button { font-size: 12px; }
-    #tttSection .game-board { max-width: 220px; gap: 4px; }
-    #tttSection .cell { font-size: 1.8em; }
-     #gkQuizSection #gkQuestionText { font-size: 1.05em; }
-     #gkQuizSection .options-area button { font-size: 0.95em; padding: 10px; }
-     .ad-container { max-width: 100%; margin: 15px auto; }
-     .content-section { margin: 10px; padding: 15px; }
-     .game-container { margin-left: 5px; margin-right: 5px; }
-     #profileSection .profile-details { padding: 10px; }
-     #profileSection .profile-details p strong { min-width: 100px; }
-     #referralSection .profile-details { padding: 10px; }
-     #referralSection .profile-details p strong { min-width: 90px; }
-     .leaderboard-display li { font-size: 0.95em; padding: 6px 10px; }
-     .leaderboard-display li::before { margin-right: 8px; }
-     .history-item { font-size: 0.85em; padding: 8px 10px; }
-     .history-timestamp { font-size: 0.8em; }
-     .history-amount { font-size: 1em; }
-}
+.leaderboard-di
